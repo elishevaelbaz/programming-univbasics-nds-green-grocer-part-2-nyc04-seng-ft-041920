@@ -2,20 +2,16 @@ require_relative './part_1_solution.rb'
 
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
-  #
   # REMEMBER: This method **should** update cart
   
   
-  #		{:item => "AVOCADO", :num => 2, :cost => 5.00},
+  #	coupon format	{:item => "AVOCADO", :num => 2, :cost => 5.00},
   coupons.each do |coupon_item|
-    # puts coupon_item
     # check the cart for that item
     current_item = find_item_by_name_in_collection(coupon_item[:item], cart)
     
     # if it exists and there is enough to qualify for the coupon
     if current_item && current_item[:count] >= coupon_item[:num]
-      # puts current_item
-      # puts coupon_item
       
       # initialize incrementor
       num_of_coupon_items = 0
@@ -26,7 +22,6 @@ def apply_coupons(cart, coupons)
         current_item[:count] -= coupon_item[:num]
         num_of_coupon_items += coupon_item[:num]
         
-        # puts "cart #{cart}"
       end
       # format it correctly and add it to the cart
       final_coupon_price = coupon_item[:cost] / num_of_coupon_items
